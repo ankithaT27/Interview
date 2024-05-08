@@ -1,0 +1,8 @@
+Track the changes that have staged but not committed:
+$ git diff --staged
+
+track the changes in the staging area (files that have been changed)
+$ git diff 
+
+Git, let us track the changes after committing a file. Suppose we have committed a file for the repository and made some additional changes after the commit. So we can track the file on this stage also.
+$ git diff HEAD  
