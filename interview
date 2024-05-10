@@ -18,4 +18,15 @@ In Recursive merge, after you branch and make some commits, there are some new o
 Rebase: apply commits of one branch on top of another
 dont rebase when there is a public repo and all developers push their work here
 
-$ git rebase -i HEAD ~3  
+$ git rebase -i HEAD~3  
+
+$ git reset --hard (resets the last made chnages like file added to a staging area) It will remove the available changes from the staging are
+
+
+
+git reset and git revert are both commands used in Git for managing changes in a repository, but they serve different purposes:
+
+git reset: This command is used to move the HEAD and the current branch to a specific commit. It can be used to reset the staging area to match the most recent commit (git reset --soft HEAD^), reset the staging area and the working directory to match the most recent commit (git reset --mixed HEAD^), or reset the staging area, the working directory, and discard all changes (git reset --hard HEAD^).
+--soft: Only moves the HEAD pointer and leaves your changes staged.
+--mixed (default): Moves the HEAD pointer and unstages your changes, but leaves them in the working directory.
+--hard: Moves the HEAD pointer, unstages your changes, and removes them from the working directory.
