@@ -1,0 +1,6 @@
+ssh -i /path/to/private_key.pem user@example.com
+ssh user@example.com
+ssh -v user@example.com (to debug issues to server)
+ssh -i myfile.pem user@example.com
+scp -i myfile.pem local.txt user@example.com:home/ubuntu/myfolder (copies local.txt from local/o
+scp -i myfile.pem user@example.com:home/ubuntu/myfolder/local.txt . (copies from one server to myfolder location)
