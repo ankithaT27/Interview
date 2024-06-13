@@ -1,0 +1,4 @@
+1) AVI issue
+
+Blaclduck prod env: here are 16 cores of CPU hence the consumption is minimal as the load average is only below 5.
+CPU Utilization od jenkins - hung state, hugh cpu, restart, dyanatrace 
