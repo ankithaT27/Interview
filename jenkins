@@ -1,0 +1,48 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Build') {
+            steps {
+                // Build steps here
+                sh 'echo "Building..."'
+            }
+        }
+        stage('Test') {
+            steps {
+                // Test steps here
+                sh 'echo "Testing..."'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                // Deployment steps here
+                sh 'echo "Deploying..."'
+            }
+        }
+    }
+
+    post {
+        always {
+            // Actions to be executed always after all stages
+            archiveArtifacts artifacts: '**/target/*.jar', allowEmptyArchive: true
+            cleanWs()
+        }
+        success {
+            // Actions to be executed only if the pipeline succeeds
+            echo 'Pipeline succeeded!'
+            // Example: Send a notification
+            // email to: 'dev-team@example.com',
+            //     subject: "Pipeline ${currentBuild.fullDisplayName} succeeded",
+            //     body: "Congratulations! Your pipeline completed successfully."
+        }
+        failure {
+            // Actions to be executed only if the pipeline fails
+            echo 'Pipeline failed!'
+            // Example: Send a notification
+            // email to: 'dev-team@example.com',
+            //     subject: "Pipeline ${currentBuild.fullDisplayName} failed",
+            //     body: "Oops! Your pipeline encountered some issues."
+        }
+    }
+}
