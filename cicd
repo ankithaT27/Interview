@@ -1,0 +1,37 @@
+sonar with jenkins
+
+install sonarscanner plugins
+go to tools--> configure sonarqube scanner
+configure sonar server and provide url, username and pw(a file conatining token)
+for the stage
+withSonarQubeEnv("Sonar")    -->this name is coming from the cred file you gave while configuring url, uname and pw
+sh "$SONAR_HOME/bin/sonar-scanner -dsonar.projectName="myproj"  -dsonar.projectKey="myproj"
+
+we also configure a quality gate where the code is deployed only if the quality gate is passed
+stage("check")
+steps{
+  script{
+  wairforqualitygate abortpipeline: false
+  }
+  }
+
+
+
+  or
+
+tage('Quality Gate') {
+            steps {
+                timeout(time: 1, unit: 'HOURS') {
+                    // Wait for SonarQube analysis to complete and check quality gate
+                    waitForQualityGate abortPipeline: false
+                }
+            }
+        }
+
+
+
+Environment
+{
+  SONAR_HOME= tools "Sonar"
+  }
+this name is configured using tools section name given by you
