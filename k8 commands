@@ -1,0 +1,13 @@
+Pods
+
+kubectl create -f pod-definition.yaml
+to edit this file: kubectl apply pod-definition.yaml
+kubectl delete pods podname
+kubectl logs podname
+kubectl exec -it <pod-name> -- sh
+kubectl edit pod podname
+
+ different types of Pod restart policies in Kubernetes.
+never,always,onFailure
+Pods can communicate with each other using their IP addresses within the Kubernetes cluster.
+Pods on the same node communicate via localhost, sharing the same network namespace. Pods on different nodes communicate through the Kubernetes network model, using overlay networking provided by the Container Network Interface (CNI) plugins, ensuring seamless and secure communication across nodes.
