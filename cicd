@@ -35,3 +35,15 @@ Environment
   SONAR_HOME= tools "Sonar"
   }
 this name is configured using tools section name given by you
+
+
+
+
+
+stage('Archive') {
+            steps {
+                // Archive artifacts (e.g., binaries, test results)
+                archiveArtifacts artifacts: '**/target/*.jar, **/test-results/**/*.xml', allowEmptyArchive: true
+            }
+        }
+    }
