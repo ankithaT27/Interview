@@ -11,3 +11,12 @@ kubectl edit pod podname
 never,always,onFailure
 Pods can communicate with each other using their IP addresses within the Kubernetes cluster.
 Pods on the same node communicate via localhost, sharing the same network namespace. Pods on different nodes communicate through the Kubernetes network model, using overlay networking provided by the Container Network Interface (CNI) plugins, ensuring seamless and secure communication across nodes.
+
+
+
+Deployment
+
+kubectl scale deployment --replicas=3
+kubectl rollout status deployment/nginx-deployment
+kubectl rollout undo deployment/nginx-dep
+
