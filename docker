@@ -43,3 +43,8 @@ By understanding these directories and their purposes, you can effectively manag
   Port Binding Conflict: Docker containers map their internal ports to host ports. If a container is stopped but not removed, it still retains its port bindings on the host. Therefore, attempting to start another container that uses the same port will result in a port binding conflict.
 
   
+ Leveraging Caching:
+To take advantage of Dockerfile caching effectively:
+
+Place instructions that are least likely to change near the top of the Dockerfile and more volatile instructions (like copying application code) near the bottom.
+Use multi-stage builds to separate build dependencies from runtime dependencies, reducing the size of the final image and improving build performance.
