@@ -48,3 +48,21 @@ To take advantage of Dockerfile caching effectively:
 
 Place instructions that are least likely to change near the top of the Dockerfile and more volatile instructions (like copying application code) near the bottom.
 Use multi-stage builds to separate build dependencies from runtime dependencies, reducing the size of the final image and improving build performance.
+
+
+stack
+docker swarm init
+docker swarm join --token <> managerip:port
+docker swarm leave
+docker swarm inspect
+docker service ls
+docker service rm name
+docker service rollback servicename
+docker service inspect name
+docker stack deploy -c docker-compose.yaml myfirststack
+docker service scale <service-name>=<number-of-replicas>
+
+Docker Swarm uses ingress load balancing by default, which distributes incoming requests across containers in a round-robin fashion. Additionally, you can configure external load balancers (like HAProxy or NGINX) to distribute traffic to Swarm services.
+
+ Docker Swarm uses DNS-based service discovery for internal communication between services. Each service in the swarm is automatically assigned a DNS entry that resolves to the set of IPs of the containers implementing the service.
+
