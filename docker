@@ -66,3 +66,11 @@ Docker Swarm uses ingress load balancing by default, which distributes incoming 
 
  Docker Swarm uses DNS-based service discovery for internal communication between services. Each service in the swarm is automatically assigned a DNS entry that resolves to the set of IPs of the containers implementing the service.
 
+docker run -d --name mycontainer --mount type=bind,source=/host/path,target=/container/path myimage
+docker run -v /host/path:/container/path ...
+docker run -v mydata_volume:/data ...
+
+Volumes
+->ananyomous
+->named
+->host voumes
