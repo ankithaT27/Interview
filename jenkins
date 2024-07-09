@@ -36,6 +36,17 @@ pipeline {
             //     subject: "Pipeline ${currentBuild.fullDisplayName} succeeded",
             //     body: "Congratulations! Your pipeline completed successfully."
         }
+
+
+post {
+        always {
+            // Clean workspace at the end of the pipeline
+            cleanWs()
+        }
+    }
+}
+
+this cleansup the workspace 
         failure {
             // Actions to be executed only if the pipeline fails
             echo 'Pipeline failed!'
