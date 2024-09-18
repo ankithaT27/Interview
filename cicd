@@ -47,3 +47,57 @@ stage('Archive') {
             }
         }
     }
+
+Jenkins with git
+install git plugin
+
+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
+
+Poll SCM to check for changes at regular intervals, or GitHub hook trigger for GITScm polling if you want to trigger builds automatically based on GitHub webhooks.
+
+ stages {
+        stage('Checkout') {
+            steps {
+                git url: 'https://github.com/username/repo.git', credentialsId: 'git-credentials-id'
+            }
+        }
+
+http://your-jenkins-url/github-webhook/
+
+A webhook is a way for an external service (like Jenkins) to receive notifications about events in a Git repository. When an event occurs in the repository (such as a push, pull request, or issue creation), the webhook sends an HTTP POST request to a specified URL with details about the event.
+
+
+pipeline {
+    agent 
+       {
+label 'linux'
+}
+    environment {
+        MY_VAR = 'value'
+        ANOTHER_VAR = credentials('my-credential-id')
+    }
+    stages {
+        stage('Example') {
+            steps {
+                echo "MY_VAR is ${env.MY_VAR}"
+ echo "Job Name: ${env.JOB_NAME}"
+            }
+        }
+    }
+}
+
+BUILD_NUMBER: The build number.
+BUILD_ID: The build ID (same as build number in most cases).
+JOB_NAME: The name of the job
+
+
+
+either we can choose take Jenkins file from SCM option and add the GitHub repo to the Repository URL section and add the token generated to creds section
+or write Jenkins file and add the url and pw tehre
+
+webhooks:
+project settings->webhook
+
+
+
+
