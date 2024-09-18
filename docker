@@ -74,3 +74,171 @@ Volumes
 ->ananyomous
 ->named
 ->host voumes
+
+
+
+A Docker image is a lightweight, standalone, and executable package that includes everything needed to run a piece of software. 
+
+Container:
+encapsulates an application and its dependencies into a single, portable, and isolated unit. 
+
+
+Docker Image is an executable package of software that includes everything needed to run an application. This image informs how a container should instantiate, determining which software components will run and how. Docker Container is a virtual environment that bundles application code with all the dependencies required to run the application
+
+Docker is an open-source containerization platform by which you can pack your application and all its dependencies into a standardized unit called a container. Containers a… See more
+
+
+View Stats for All Running Containers
+
+bash
+Copy code
+docker stats
+View Stats for Specific Containers
+
+bash
+Copy code
+docker stats container1 container2
+
+A "dangling" image in Docker refers to an image that is not tagged and is not associated with any containers. Dangling images typically arise during the process of image creation and modification, and they are generally considered to be unused and obsolete
+
+docker export CONTAINER_ID > container.tar
+docker import container.tar
+docker run -d --name mycontainer --cpus="2.0" nginx
+docker cp myfile.txt mycontainer:/usr/src/app/
+docker cp mycontainer:/usr/src/app/result.txt /tmp/result/
+
+
+CMD: always gets overridden at the runtime
+Entrypoint: it doesn't
+
+CMD provides default arguments to the ENTRYPOINT. If both ENTRYPOINT and CMD are used, ENTRYPOINT specifies the command, and CMD provides default arguments.
+
+
+FROM ubuntu:22.04
+ENTRYPOINT ["python"]
+CMD ["app.py"]
+ENTRYPOINT ["python"]: Specifies that the main executable is python.
+CMD ["app.py"]: Provides default arguments to python, so the full command executed when the container starts is python app.py
+CMD ["echo","hi","users"]
+
+
+docker compose
+
+version:
+services:
+   webserver:
+     build: "/web"
+     ports:
+      -"8000:8000"
+     environment:
+       db_user_name: ankitha
+     netwroks:
+       driver: bridge
+
+   db
+
+
+docker-compose up --build
+
+
+docker-compose.yml file provides the basic configuration.
+The docker-compose.override.yml file provides environment-specific overrides or additional settings.
+docker-compose -f docker-compose.yml -f docker-compose.override.yml up
+docker-compose -f docker-compose.yml -f docker-compose.dev.yml up
+docker stack deploy -c docker-compose.yml -c docker-compose.prod.yml my_stack
+
+
+secrets:
+pass it to a image while creating it:
+docker run -e MY_SECRET_KEY=my-secret-value my-image
+
+pass it in dockerfile
+version: '3'
+services:
+  my-service:
+    image: my-image
+    environment:
+      - MY_SECRET_KEY=my-secret-value
+
+this can also be done as a a file
+
+version: '3'
+services:
+  my-service:
+    image: my-image
+    env_file:
+      - .env
+
+
+docker swarm init
+
+docker swarm join --token SWMTKN-1-26gwatxfq1y2hj89o5akhfo5dgc4hb7uc6ie1g50ktu4b32bb8-f4ashwcb3qgmeuv8lznfw522w 172.31.45.193:2377
+
+docker node ls (lists the nodes (worker and manager machines)
+
+docker service create --name my-service --replicas 3 nginx
+
+docker service scale my-service=5
+
+docker service rm $(docker service ls -q)
+
+
+docker service ps my-service
+
+docker service update --rollback <service_name>
+
+
+
+
+stack:
+created by multiple images in a docker-compose file
+docker stack deploy -c docker-compose.yml my_stack
+docker stack ls
+docker stack rm my_stack
+
+
+
+
+docker secret
+
+docker secret create db_password /abc/myfile/password.txt
+
+
+
+
+
+
+Linux:
+Debian:
+-->ubuntu -- apt-get update
+
+redhat
+CentOS, RHEL
+--> yum or dnf
+
+
+find -name a.txt
+
+curl ifconfig.me public ip
+ifconfig -pvt ip
+
+tar -czvf me.tar.gz me (compress a dierectory)
+ssh [username]@[hostname or IP address] (port - 22 )
+
+
+
+
+Jenkins:
+master
+slave 
+(executors)
+
+In Jenkins, executors are essentially the threads responsible for running build jobs on a node (whether it's the master or an agent).
+
+
+
+sq
+
+SonarQube is an open-source platform used for continuous inspection of code quality. It provides static code analysis to detect issues such as bugs, vulnerabilities, and code smells in various programming languages
+
+
